@@ -20,5 +20,17 @@ package phantom_pkg;
         logic [2:0]  funct3;     // for EX-stage branch condition select
     } ctrl_t;
 
+    typedef struct packed {
+        logic [31:0]    pc;         // for branch target and AUIPC
+        logic [31:0]    pc_plus_4;  // for JAL/JALR writeback (WB)
+        logic [31:0]    rs1_data;   // ALU/BranchComp operand (EX)
+        logic [31:0]    rs2_data;   // ALU/BranchComp operand + store data (EX/MEM)
+        logic [31:0]    inst;       // for ImmGen in EX
+        logic [4:0]     rs1_addr;   // inst[19:15] — for forwarding unit
+        logic [4:0]     rs2_addr;   // inst[24:20] — for forwarding unit
+        logic [4:0]     rd_addr;    // inst[11:7]  — destination, rides to WB
+        ctrl_t          ctrl;       // all control signals
+    } id_ex_t;
+
 endpackage
 
