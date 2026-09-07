@@ -32,5 +32,23 @@ package phantom_pkg;
         ctrl_t          ctrl;       // all control signals
     } id_ex_t;
 
-endpackage
+    typedef struct packed {
+        logic [31:0]    ALU;
+        logic [31:0]    rs2_data;   // DataW
+        logic [4:0]     rd_addr;    
+        logic [31:0]    pc_plus_4;
+        logic           RegWEn;
+        logic           MemRW;
+        logic [1:0]     WBSel;
+    } ex_mem_t;
 
+    typedef struct packed {
+        logic [31:0]    DataR;
+        logic [31:0]    ALU;    
+        logic [31:0]    pc_plus_4;
+        logic [4:0]     rd_addr;
+        logic           RegWEn;
+        logic [1:0]     WBSel;
+    } mem_wb_t;
+
+endpackage
