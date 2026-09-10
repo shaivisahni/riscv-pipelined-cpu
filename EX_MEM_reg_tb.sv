@@ -38,6 +38,7 @@ module EX_MEM_reg_tb;
         ex_mem_next = '{
             ALU:        32'hDEADBEEF,
             rs2_data:   32'hAAAAAAAA,
+            rs2_addr:   5'hCCCCC,
             rd_addr:    5'b00011,
             pc_plus_4:  32'hCAFEBABE,
             RegWEn:     1'b1,
