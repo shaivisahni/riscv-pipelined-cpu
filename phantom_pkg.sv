@@ -1,5 +1,11 @@
 package phantom_pkg;
 
+    typedef enum logic [1:0] {
+        FWD_REG = 2'b00,
+        FWD_MX  = 2'b01,
+        FWD_WX  = 2'b10
+    } fwd_sel_e;
+
     typedef struct packed {
         logic [31:0] pc;
         logic [31:0] pc_plus_4;
@@ -35,6 +41,7 @@ package phantom_pkg;
     typedef struct packed {
         logic [31:0]    ALU;
         logic [31:0]    rs2_data;   // DataW
+        logic [4:0]     rs2_addr;
         logic [4:0]     rd_addr;    
         logic [31:0]    pc_plus_4;
         logic           RegWEn;
